@@ -10,7 +10,7 @@ const WebsitePreviews = () => {
   const fetchPreviews = async () => {
     setLoading(true);
     try {
-      const response = await axios.post("http://localhost:5000/screenshot", { 
+      const response = await axios.post("http://xiangliang.online/api/screenshot", { 
         urls: urls.split("\n").map((url) => url.trim()).filter(Boolean)
       }, {
         headers: { "Content-Type": "application/json" }
