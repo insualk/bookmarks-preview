@@ -36,7 +36,7 @@ async function fetchMetadata(url) {
   }
 }
 
-app.post("/previews", async (req, res) => {
+app.post("/api/previews", async (req, res) => {
   const { urls } = req.body;
   if (!Array.isArray(urls) || urls.length === 0) return res.status(400).json({ error: "Invalid URLs" });
 
@@ -74,7 +74,7 @@ async function captureScreenshot(url) {
 }
 
 // API Route: Generate Website Screenshot
-app.post("/screenshot", async (req, res) => {
+app.post("/api/screenshot", async (req, res) => {
   const urls = req.body.urls;
 
   if (!urls || urls.length === 0 ) return res.status(400).json({ error: "URL is required" });
@@ -96,6 +96,6 @@ app.post("/screenshot", async (req, res) => {
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`📸 Screenshot API running on port ${PORT}`));
 
-app.get("/", (req, res) => {
-  res.send("Backend is running! Use POST /previews to fetch website previews.");
+app.get("/api/", (req, res) => {
+  res.send("Backend is running! Use POST /api/screenshot to fetch website previews.");
 });
